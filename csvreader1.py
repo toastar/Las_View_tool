@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+import os 
 import csv
 import numpy as np
 import matplotlib as mpl
@@ -7,18 +7,18 @@ import matplotlib.pyplot as plt
 from functools import partial
 from Las_view_all import *
 
-datadir='/home/karl/open_data/rmotc/DataSets/Well Log/CD Files/'
+datadir='D:\Work\DataSets/Well Log/CD Files'
 
 #start event handler
 
 def onclick(event):
-    #if event.dblclick:
+    if event.dblclick:
         #print event.button
 
         lookupfile(event.xdata,event.ydata)
 
 
-fig = plt.figure()
+fig = plt.figure(2)
 connection_id = fig.canvas.mpl_connect('button_press_event', onclick)
 #end event handler
 
@@ -45,7 +45,7 @@ def lookupfile(xx,yy):
     
     #kick off the LAS viewer
     plotAllLas(filename)
-    
+    #os.system('python Las_view_all.py \"' + filename +'\"'
 
 
 
