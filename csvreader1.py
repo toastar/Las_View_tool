@@ -4,6 +4,46 @@ import csv
 import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
+from functools import partial
+
+
+
+#start event handler
+
+def onclick(event):
+    if event.dblclick:
+        #print event.button
+
+        lookupfile(event.xdata,event.ydata)
+
+
+fig = plt.figure()
+connection_id = fig.canvas.mpl_connect('button_press_event', onclick)
+#end event handler
+
+
+
+def lookupfile(xx,yy):
+    #look up which file has the closet point
+    
+    print xx
+    print yy
+    
+    
+    #build the las name
+    #finalname = datadir+
+    
+    #kick off the LAS viewer
+    #plotAllLas(filename, "GRD")
+
+
+
+
+
+
+
+
+
 
 ifile  = open("sonic.las", "rb")
 reader = csv.reader(ifile)
