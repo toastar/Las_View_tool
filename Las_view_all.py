@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from las import LASReader
+import sys
 
 def plotAllLas(Laslocation):
     sample = LASReader(Laslocation, null_subs=np.nan)
@@ -28,5 +29,5 @@ def plotAllLas(Laslocation):
 if __name__ == "__main__":
     #Laslocation="/home/karl/open_data/rmotc/DataSets/Well Log/CD Files/LAS_log_files/Deeper_LAS_files/49025228330000_281742.LAS"
      
-	plotAllLas("49025108700000_283715.LAS")
+	plotAllLas(sys.argv[1])
 
