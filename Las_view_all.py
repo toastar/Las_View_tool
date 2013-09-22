@@ -22,18 +22,27 @@ def plotAllLas(Laslocation,Logname):
 			if(log == 1):
 				print lognames[name]
 				print log
-				ax = plt.subplot(1,totalname-1,log)
+				ax1 = plt.subplot(1,totalname-1,log)
 				plt.plot(sample.data[lognames[name]], sample.data['DEPT'])
+                                ax1.invert_yaxis()
 			else:
 				print log
 				print lognames[name]
                 #ax = fig.add_subplot(totalname, 1, log, sharex = ax)
-				plt.subplot(1, totalname-1, log)
-		        plt.plot(sample.data[lognames[name]], sample.data['DEPT'])
-		        
+				ax=plt.subplot(1, totalname-1, log, sharey = ax1)
+                                plt.plot(sample.data[lognames[name]], sample.data['DEPT'])
+                                ax.invert_yaxis()
 			log += 1
 			#ax.invert_yaxis()
     		#ax.set_title(lognames[name])
 			#plt.title(logname[name])
     		#ax.set_ylabel('Depth (feet)')
     pyplot.show()
+
+if __name__ == "__main__":
+    #Laslocation="/home/karl/open_data/rmotc/DataSets/Well Log/CD Files/LAS_log_files/Deeper_LAS_files/49025228330000_281742.LAS"
+     
+    #plotAllLas(Laslocation,' ')
+
+    plotAllLas("/home/karl/open_data/rmotc/DataSets/Well Log/CD Files/LAS_log_files/Deeper_LAS_files/49025106780000_282182.LAS", "GRD")
+
