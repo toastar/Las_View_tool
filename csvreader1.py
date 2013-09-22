@@ -5,13 +5,14 @@ import numpy as np
 import matplotlib as mpl
 import matplotlib.pyplot as plt
 from functools import partial
+from Las_view_all import *
 
-
+datadir='/home/karl/open_data/rmotc/DataSets/Well Log/CD Files/'
 
 #start event handler
 
 def onclick(event):
-    if event.dblclick:
+    #if event.dblclick:
         #print event.button
 
         lookupfile(event.xdata,event.ydata)
@@ -29,17 +30,22 @@ def lookupfile(xx,yy):
     print xx
     print yy
     
-    
+    mindist=1e31
+    for i in range(len(x)):
+        dist=(x[i]-xx)*(x[i]-xx)+(y[i]-yy)*(y[i]-yy)
+        if (dist<mindist):
+            mindist=dist
+            indx_mindist=i
+
+    print mindist, indx_mindist
+    filename=datadir+'/'+data['dir'][indx_mindist]+'/'+data['filename'][indx_mindist]
+    print filename
     #build the las name
     #finalname = datadir+
     
     #kick off the LAS viewer
-    #plotAllLas(filename, "GRD")
-
-
-
-
-
+    plotAllLas(filename)
+    
 
 
 
@@ -65,10 +71,6 @@ for row in reader:
 #for column_name in ['filename','dir','api','wellname','x','y','curve']:
 #    print column_name, data[column_name]
 print data["x"]
-#print "api=",api
-#print "wellno=",wellno
-#print "north=",north
-#print "east=",east
 data['x'],data['y']
 x=np.array(data['x'],dtype=np.float)
 y=np.array(data['y'],dtype=np.float)
